@@ -57,8 +57,22 @@ function checkAnswer(currentLevel) {
 
   // if clicked button didn't match gamePattern, show wrong answer, reset game.
   } else {
+    playSound("wrong");
+    $("body").addClass("game-over");
+    $("#level-title").text("Game Over, Press Any Key to Restart")
 
+    setTimeout(function() {
+      $("body").removeClass("game-over");
+    }, 200);
+
+    startOver();
   }
+};
+
+function startOver() {
+  level = [0];
+  gamePattern = [];
+  started = false;
 };
 
 function playSound(name) {
